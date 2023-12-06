@@ -102,7 +102,7 @@ const Products = () => {
         {filteredProducts.map((product) => {
           if (product.quantity > 0) {
             while (product.quantity > 0) {
-              return (<div className=" w-[90vw] min-[425px]:w-[80vw] md:w-[40vw] lg:w-[25vw] xl:w-[20vw] h-[35vh] md:h-[40vh] lg:h-[35vh] px-4 border border-black shadow-md shadow-[#666] rounded-md flex flex-col justify-center items-center " key={product._id}>
+              return (<div className=" w-[90vw] min-[425px]:w-[80vw] md:w-[40vw] lg:w-[25vw] xl:w-[20vw] h-[35vh] md:h-[40vh] px-4 border border-black shadow-md shadow-[#666] rounded-md flex flex-col justify-center items-center " key={product._id}>
                 <div className="h-1/6 w-full flex items-center justify-center " >
                   <img src={product.product_photo} alt="" style={imageStyle} className="bg-white border-solid -translate-y-8 border-black border-2 rounded-full  " />
                 </div>
@@ -110,8 +110,8 @@ const Products = () => {
 
                 <div className="h-4/6 w-full flex flex-col justify-between mb-1">
                   <div className="w-full h-4/5">
-                    <h2 className='text-black text-lg lg:text-xl font-bold text-center h-2/6 overflow-hidden'>{product.name}</h2>
-                    <p className="h-4/6 text-start overflow-hidden ">{product.description.length>40? `${product.description.slice(0,70)}...`:product.description}</p>
+                    <h2 className='text-black text-lg lg:text-xl font-bold text-center h-2/5'>{product.name}</h2>
+                    <p className="h-3/5 text-start overflow-hidden ">{product.description.length>40? `${product.description.slice(0,70)}...`:product.description}</p>
                   </div>
                   <div className="w-full h-1/5">
                     <p className="h-5  font-bold text-lg">Price: ${product.price}</p>
