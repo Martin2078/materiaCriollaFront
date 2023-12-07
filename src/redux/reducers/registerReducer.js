@@ -20,7 +20,6 @@ const registerReducer = createReducer(initialState, (builder) =>{
             }else{
                 newState.data = action.payload
                 newState.error = null
-                console.log (newState)
             }
                 return newState
         })
