@@ -89,6 +89,11 @@ function SignIn() {
               <p className='font-semibold'>Don`t you have an account yet?</p>
               <Link to={'/Register'}><p className='text-blue-600 font-semibold'>Register</p></Link>
             </div>
+            <div className='w-full h-fit'>
+              <p className='font-semibold text-lg text-[#999]'>Test account:</p>
+              <p className='font-semibold text-[#999]'>materiaCriolla@gmail.com</p>
+              <p className='font-semibold text-[#999]'>hola1234</p>
+            </div>
             <div className='w-full flex flex-col items-end md:flex-row h-1/5 '>
               <button onClick={() => handleSignIn()}
                 type="submit"

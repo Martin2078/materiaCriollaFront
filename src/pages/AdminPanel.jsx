@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import Details from '../components/Details';
-import products from "../redux/actions/productosAction";
 import axios from "axios";
 import edit from "../../public/images/edit.png"
 import borrar from "../../public/images/borrar.png"
 import EditProduct from "./EditProduct";
 import añadirWhite from "../../public/images/añadirWhite.png"
-import CreateProducto from "../components/createProducto";
+import CreateProducto from "../components/CreateProducto";
 import { toast, Toaster } from 'react-hot-toast'
 import checkoutActions from "../redux/actions/checkoutAction";
 import login from "../redux/actions/singInAction";
