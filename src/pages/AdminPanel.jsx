@@ -7,7 +7,7 @@ import edit from "../../public/images/edit.png"
 import borrar from "../../public/images/borrar.png"
 import EditProduct from "./EditProduct";
 import añadirWhite from "../../public/images/añadirWhite.png"
-import CreateProducto from "../components/createProducto";
+import CreateProducto from "../components/CreateProducto";
 import { toast, Toaster } from 'react-hot-toast'
 import checkoutActions from "../redux/actions/checkoutAction";
 import login from "../redux/actions/singInAction";
