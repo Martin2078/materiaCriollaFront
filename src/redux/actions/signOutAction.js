@@ -5,7 +5,7 @@ const api = 'https://materiacriollaback.onrender.com';
 const signOut = createAsyncThunk('signOut', async (data) => {
     let headers = { headers: { 'Authorization': `Bearer ${data}` } }
     try {
-        const res=await axios.post(api + '/auth/signOut',null,headers)
+        const res=axios.post(api + '/auth/signOut',null,headers)
         localStorage.clear()
         return res.data.message
     } catch (error) {

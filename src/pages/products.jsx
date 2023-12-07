@@ -87,7 +87,7 @@ const Products = () => {
       {change && <Details detail={detail} change={change} setChange={setChange} />}
       <div className='w-full bg-white flex flex-col items-center lg:rounded-lg lg:px-4 lg:py-1 gap-2 min-[320px]:rounded-full min-[320px]:py-2 min-[320px]:px-2'>
         <div className="flex flex-col items-center gap-5 lg:flex-row w-full justify-between px-5 pt-4">
-          <p className=" font-bold  text-2xl sm:text-3xl">Products</p>
+          <p className="font-bold text-2xl sm:text-3xl">Products</p>
           <input id='search' type="search" style={filterInputStyle} className="outline-none w-5/6 lg:w-2/6" placeholder='Find Your Product Here' defaultValue={nameFilter} onChange={(e) => setNameFilter(e.target.value)} />
         </div>
         <div className="flex justify-center w-full bg-[url('/images/madera.png')] rounded-xl gap-5 flex-wrap m-5 px-2 lg:px-14 py-4 lg:justify-around">
@@ -109,11 +109,11 @@ const Products = () => {
 
 
                 <div className="h-4/6 w-full flex flex-col justify-between mb-1">
-                  <div className="w-full h-4/5">
-                    <h2 className='text-black text-lg lg:text-xl font-bold text-center h-2/5'>{product.name}</h2>
-                    <p className="h-3/5 text-start overflow-hidden ">{product.description.length>40? `${product.description.slice(0,70)}...`:product.description}</p>
+                  <div className="w-full h-3/4">
+                    <h2 className='text-black text-lg lg:text-xl font-bold text-center h-1/3'>{product.name}</h2>
+                    <p className="text-start overflow-hidden ">{product.description.length>90? `${product.description.slice(0,90)}...`:product.description}</p>
                   </div>
-                  <div className="w-full h-1/5">
+                  <div className="w-full h-1/4">
                     <p className="h-5  font-bold text-lg">Price: ${product.price}</p>
                     <p className="font-bold ">Stock: {product.quantity}</p>
                   </div>

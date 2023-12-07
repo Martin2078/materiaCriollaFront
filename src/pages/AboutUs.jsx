@@ -61,11 +61,11 @@ const ContactForm = () => {
   }, [token])
 
   return (
-    <div className="register-container w-full h-screen flex flex-col md:flex-row px-5">
-      <div className="w-full md:w-2/3 flex flex-col items-center justify-center p-8 md:pt-44">
-        <h1 className="text-3xl font-bold mb-1 pt-5">Contact Us</h1>
-        <form className="bg-white shadow-2xl rounded px-8 mb-4 pb-4" onSubmit={handleSubmit}>
-          <div className="mb-4">
+    <div className="register-container  w-full h-full md:h-screen flex flex-col md:flex-row lg:px-5 bg-white">
+      <div className="w-full md:w-1/2 flex flex-col bg-white items-center justify-center md:p-4 ">
+        <form className="bg-white shadow-2xl px-6  border-b pb-4 w-full flex flex-col items-center rounded-lg" onSubmit={handleSubmit}>
+          <h1 className="text-3xl font-bold mb-1 pt-5">Contact Us</h1>
+          <div className="mb-4 w-full">
             <label htmlFor="name" className="block text-gray-700 font-bold mb-0">
               Name
             </label>
@@ -73,12 +73,12 @@ const ContactForm = () => {
               type="text"
               id="name"
               name="name"
-              className="form-input  px-14 py-2 border rounded-bl-full"
+              className="form-input  px-2 py-2 border rounded-bl-full w-full"
               onChange={handleInputChange}
               value={formData.name}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 w-full">
             <label htmlFor="email" className="block text-gray-700 font-bold mb-0">
               Email
             </label>
@@ -86,19 +86,19 @@ const ContactForm = () => {
               type="email"
               id="email"
               name="email"
-              className="form-input  px-14 py-2 border rounded-ee-full"
+              className="form-input  px-2 py-2 border rounded-ee-full w-full"
               onChange={handleInputChange}
               value={formData.email}
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 w-full">
             <label htmlFor="messageType" className="block text-gray-700 font-bold mb-0">
               Message Type
             </label>
             <select
               id="messageType"
               name="messageType"
-              className="form-input px-3 py-2 border rounded"
+              className="form-input px-3 py-2 border rounded w-full"
               onChange={handleInputChange}
               value={formData.messageType}
             >
@@ -108,23 +108,23 @@ const ContactForm = () => {
               <option value="Other">Other</option>
             </select>
           </div>
-          <div className="mb-4">
+          <div className="mb-4 w-full">
             <label htmlFor="message" className="block text-gray-700 font-bold mb-0">
               Message
             </label>
             <textarea
               id="message"
               name="message"
-              className="form-input px-3 py-2 border rounded"
+              className="form-input px-3 py-2 border rounded w-full"
               style={{ minHeight: '150px', width: '100%', resize: 'none' }}
               onChange={handleInputChange}
               value={formData.message}
             ></textarea>
           </div>
-          <div className='flex flex-col'>
+          <div className='flex flex-col w-full'>
             <button
               type="submit"
-              className="text-white text-2xl font-bold py-2 px-20 rounded mt-4 w-full"
+              className="text-white text-2xl font-bold py-2 rounded mt-4 w-full"
               style={{ backgroundImage: 'url("public/images/madera.png")', backgroundSize: 'cover' }}
             >
               Send Message
@@ -132,9 +132,9 @@ const ContactForm = () => {
           </div>
         </form>
       </div>
-      <div className="contact-info w-full md:w-1/2 shadow-md p-6 rounded bg-white px-8 pb-4 m-4 sm:p-44" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="video-background" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
-          <video autoPlay loop muted style={{ width: '100%', height: '100%', objectFit: 'cover' }}>
+      <div className="contact-info bg-white w-full md:w-1/2 shadow-md lg:p-8 rounded  sm:p-44" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="video-background px-2 py-2" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+          <video className='rounded-lg' autoPlay loop muted style={{ width: '100%', height: '100%', objectFit: 'cover' }}>
             <source src="../public/videos/matevideo1.mp4" />
           </video>
         </div>

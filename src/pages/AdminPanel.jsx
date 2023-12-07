@@ -11,7 +11,7 @@ import CreateProducto from "../components/createProducto";
 import { toast, Toaster } from 'react-hot-toast'
 import checkoutActions from "../redux/actions/checkoutAction";
 import login from "../redux/actions/singInAction";
-const deleteCheckout=checkoutActions.deleteCheckout
+const deleteCheckout = checkoutActions.deleteCheckout
 const Admin = () => {
   const dispatch = useDispatch();
   const { user, token } = useSelector((store) => store.profile)
@@ -39,11 +39,11 @@ const Admin = () => {
         const data = { user: userStorage, token: tokenStorage }
         dispatch(login(data))
       }
-    }else{
+    } else {
       getProducts()
       getCategory()
     }
-  }, [productoModificado, page,token])
+  }, [productoModificado, page, token])
 
 
 
@@ -165,7 +165,7 @@ const Admin = () => {
     padding: '8px',
     border: '1px solid #ccc',
     borderRadius: '4px',
-    
+
   };
 
   const checkboxStyle = {
@@ -191,38 +191,39 @@ const Admin = () => {
 
   return (
 
-    <div className='h-full w-full flex flex-col items-center'>
+    <div className='h-full w-full flex flex-col items-center gap-5'>
       <Toaster position='top-center' toastOptions={{ success: { duration: 2000 }, error: { duration: 2000 } }} />
-      <div className="flex w-full justify-between px-5 pt-4 items-center">
-        <h1 className="text-3xl font-bold mb-6 mt-6">My products</h1>
-        <input type="search" onChange={(e) => { handleSearch(e); setPage(1) }} ref={search} style={filterInputStyle} className="outline-none"  placeholder="search your Product" />
+      <div className="flex flex-col items-center gap-5 lg:flex-row w-full justify-between px-5 pt-4">
+        <h1 className="font-bold text-2xl sm:text-3xl">My products</h1>
+        <input type="search" onChange={(e) => { handleSearch(e); setPage(1) }} ref={search} style={filterInputStyle} className="outline-none w-5/6 lg:w-2/6" placeholder="search your Product" />
       </div>
-      <div onClick={() => { showCreate() }} className="flex cursor-pointer h-16 w-1/3 rounded-xl bg-[url('/images/madera.png')] mb-4 items pt-3 gap-5 justify-center text-center bg-slate-300">
-        <p className="text-2xl text-white font-semibold ">Create a new product</p>
-        <img src={añadirWhite} className="w-10 h-10 " alt="" />
+      <div onClick={() => { showCreate() }} className="flex items-center cursor-pointer h-10 lg:h-16 w-11/12 lg:w-1/3 rounded-xl bg-[url('/images/madera.png')] items gap-2 lg:gap-5 justify-center text-center">
+        <p className="text-xl lg:text-2xl text-white font-semibold ">Create a new product</p>
+        <img src={añadirWhite} className="w-8 lg:w-10 h-8 lg:h-10 " alt="" />
       </div>
       {change && <EditProduct modificarProducto={modificarProducto} producto={producto} change={change} setChange={setChange} />}
       {show ? <CreateProducto show={show} setShow={setShow} user={user} categorias={categorias} handleCreate={handleCreate} /> : null}
 
-      <div className="flex flex-row flex-wrap w-full overflow-y-scroll h-[75vh] justify-center">
+      <div className="lg:overflow-y-scroll flex flex-col items-center justify-center md:flex-row md:flex-wrap gap-x-5 gap-y-20 pt-20 pb-5 h-full  lg:h-[78vh] w-full">
         {productosFiltrados.map((product) => (
-          <div className="w-3/12 h-[35vh] m-2 mt-16 justify-center items-center">
-            <div className="flex items-center" key={product._id} style={cardStyle}>
-              <div className="-translate-y-16">
-                <img src={product.product_photo} alt="" style={imageStyle} className="bg-white border-solid border-black border-2 rounded-full " />
+          <div key={product._id} className="w-[90vw] min-[425px]:w-[80vw] md:w-[40vw] lg:w-[25vw] xl:w-[20vw] h-[35vh] md:h-[40vh] px-4 border border-black shadow-md shadow-[#666] rounded-md flex flex-col justify-center items-center ">
+            <div className="h-1/6 w-full flex items-center justify-center">
+              <img src={product.product_photo} alt="" style={imageStyle} className="bg-white border-solid -translate-y-8 border-black border-2 rounded-full" />
+            </div>
+            <div className="w-full h-4/6 flex flex-col items-center justify-start">
+              <div className="w-full h-3/4">
+                <h2 className='text-black text-lg lg:text-xl font-bold text-center h-1/3 '>{product.name.length>40? `${product.name.slice(0,40)}...` : product.name}</h2>
+                <p className="text-start overflow-hidden ">{product.description.length > 90 ? `${product.description.slice(0, 90)}...` : product.description}</p>
               </div>
-              <div className="">
-                <h2 className='text-black text-xl font-bold w-full h-14 mb-6 -translate-y-12 text-center'>{product.name}</h2>
-
-                <p className=" h-16 -translate-y-16 text-center">{product.description.length>40? `${product.description.slice(0,120)}...`:product.description}</p>
-              </div>
-              <div className="flex   justify-between w-full">
-                <button onClick={() => handleEditProduct(product)}><img src={edit} className="w-7  " /> </button>
-                <button onClick={() => handleDelete(product._id)}><img src={borrar} className="w-7" /> </button>
-
+              <div className="w-full h-1/4">
+                  <p className="font-bold">Stock left: {product.quantity}</p>
+                  <p className="font-bold">Actual price: {product.price}</p>
               </div>
             </div>
-
+            <div className="h-1/6 w-full flex items-center justify-between">
+              <button onClick={() => handleEditProduct(product)}><img src={edit} className="w-7  " /> </button>
+              <button onClick={() => handleDelete(product._id)}><img src={borrar} className="w-7" /> </button>
+            </div>
           </div>
         ))}
 

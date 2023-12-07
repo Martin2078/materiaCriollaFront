@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Login from '../redux/actions/singInAction';
 import imagenmate from '../assets/imagen-mate.jpeg';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Toaster, useToaster, toast } from 'react-hot-toast';
 
 
@@ -61,41 +61,46 @@ function SignIn() {
   }, [token])
 
   return (
-    <div className="login-container w-full h-screen flex flex-col md:flex-row">
-      <div className="w-full md:w-2/3 flex flex-col items-center justify-center p-8">
-        <h1 className="text-4xl font-bold mb-8">Login</h1> {/* Aumenta el tamaño del título y agrega margen inferior */}
-        <div className="text-center font-base text-black mb-4"> {/* Agrega margen inferior al texto */}
-          Let's drink mate
+    <div className="login-container w-full h-full lg:h-screen flex flex-col items-center justify-center md:flex-row lg:pl-5">
+      <div className="w-full h-[80vh] lg:h-full md:w-1/2 flex flex-col items-center justify-center p-4 lg:p-8">
+        <div className="w-full lg:w-11/12 h-[50vh] rounded-xl shadow-2xl flex flex-col items-center p-4 lg:px-6">
+          <div className='w-full flex flex-col items-center h-[10vh]'>
+          <h1 className="text-4xl font-bold ">Login</h1> 
+          <p className='text-2xl'>Let`s drink mate!</p>
+          </div>
+          <form onSubmit={handleSignIn} className="w-full h-full flex flex-col justify-evenly items-center"> 
+            <div className="w-full h-1/5">
+              <label htmlFor="email" className="block text-gray-700 font-bold">Email</label>
+              <input
+                ref={emailRef}
+                type="email"
+                className="w-full h-2/3 py-1 px-2 form-input border rounded"  // Aumenta el margen inferior
+              />
+            </div>
+            <div className="w-full h-1/5">
+              <label htmlFor="password" className="block text-gray-700 font-bold ">Password</label>
+              <input
+                ref={passwordRef}
+                type="password"
+                className="w-full h-2/3 py-1 px-2 form-input border rounded"
+              />
+            </div>
+            <div className='w-full h-1/5 flex flex-col xl:flex-row py-2 xl:gap-2'>
+              <p className='font-semibold'>Don`t you have an account yet?</p>
+              <Link to={'/Register'}><p className='text-blue-600 font-semibold'>Register</p></Link>
+            </div>
+            <div className='w-full flex flex-col items-end md:flex-row h-1/5 '>
+              <button onClick={() => handleSignIn()}
+                type="submit"
+                className="h-[5vh]  text-white bg-[url('../public/images/madera.png')]  text-2xl font-bold rounded w-full  shadow-md shadow-[#666]"
+              >
+                Sign In
+              </button>
+            </div>
+          </form>
         </div>
-        <form onSubmit={handleSignIn} className="bg-white shadow-2xl rounded p-4 md:p-12 mb-4 "> {/* Aumenta el padding del formulario */}
-          <div className="md:mr-4">
-            <label htmlFor="email" className="block text-gray-700 font-bold mt-2">Email</label>
-            <input
-              ref={emailRef}
-              type="email"
-              className="form-input px-4 py-2 border rounded mt-2 mb-4"  // Aumenta el margen inferior
-            />
-          </div>
-          <div className="md:mr-4">
-            <label htmlFor="password" className="block text-gray-700 font-bold mb-2">Password</label>
-            <input
-              ref={passwordRef}
-              type="password"
-              className="form-input px-4 py-2 border rounded"
-            />
-          </div>
-          <div className='flex flex-col pt-8 md:flex-row'> {/* Aumenta el padding superior del botón */}
-            <button onClick={() => handleSignIn()}
-              type="submit"
-              className="text-white text-2xl font-bold py-2 px-4 rounded mt-4 md:mt-0 w-full"
-              style={{ backgroundImage: 'url("public/images/madera.png")', backgroundSize: 'cover' }}
-            >
-              Sign In!
-            </button>
-          </div>
-        </form>
       </div>
-      <div className="w-full md:w-1/2 shadow-md p-6 rounded bg-white px-8 pb-4 m-4">
+      <div className="w-full h-full md:w-1/2 shadow-md rounded hidden lg:block bg-white p-6">
         <img
           src={imagenmate}
           alt="Login"

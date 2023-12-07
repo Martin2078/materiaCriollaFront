@@ -15,9 +15,15 @@ import edit from "/images/edit.png"
 import { useSelector, useDispatch } from 'react-redux'
 import signOut from '../redux/actions/signOutAction.js'
 import { useSpring, animated } from '@react-spring/web'
+import toast, { Toaster } from 'react-hot-toast'
 
 const display = ({ open, setOpen }) => {
-    const { user, token } = useSelector((store) => store.profile)
+    const { user, token, loading,message} = useSelector((store) => store.profile)
+    if (loading) {
+        toast.loading(message)
+    }else{
+        toast.dismiss()
+    }
     const [screenwidth, setScreenWidth] = useState(window.innerWidth)
     const dispatch = useDispatch()
     async function closeAccount() {
@@ -42,9 +48,12 @@ const display = ({ open, setOpen }) => {
     }, [])
     return (
 
-        <animated.div style={{ ...animacion }} className={`lg:relative z-10 ${open ? "lg:w-3/12 h-screen" : "lg:w-1/12"} flex flex-col items-center lg:justify-between ${open && "min-[320px]:fixed"} min-[320px]:bg-white lg:pt-20 lg:pb-10 min-[320px]:py-5 border-b lg:border-r lg:border-b-0 border-black min-[320px]:gap-5 min-[320px]:w-screen `}>
+        <animated.div style={{ ...animacion }} className={`lg:relative z-10 ${open ? "lg:w-3/12 h-screen overflow-y-auto" : "lg:w-1/12"} flex flex-col items-center lg:justify-between ${open && "min-[320px]:fixed"} min-[320px]:bg-white lg:pt-20 lg:pb-10 min-[320px]:py-5 border-b lg:border-r lg:border-b-0 border-black min-[320px]:gap-5 min-[320px]:w-screen `}>
+            <Toaster toastOptions={{
+                position:'top-center'
+            }}/>
             <img onClick={() => setOpen(!open)} className={`absolute block cursor-pointer ${!open ? "top-4 lg:self-center lg:left-autoc min-[320px]:left-8 w-6" : "top-2 right-2 w-8"}`} src={!open ? menu : close} alt="" />
-            <img className={`${!open ? "absolute top-1 right-3 w-20" : "w-28"} block lg:hidden w-20`} src={logo} alt="" />
+            <img className={`${!open ? "absolute top-1 right-3 w-14" : "w-28"} block lg:hidden`} src={logo} alt="" />
 
             <div className={`w-full min-[320px]:hidden lg:flex min-[320px]:px-4 lg:px-0 gap-2 justify-center items-center ${!open && "hidden"}`}>
                 <Link to={'/Me'}>

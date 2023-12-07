@@ -3,7 +3,9 @@ import getProductos from '../actions/productosAction'
 
 const initialState = {
     products: [],
-    error: null
+    error: null,
+    loading:false,
+    message:null
 }
 
 const getProductsReducer = createReducer(initialState, (builder) =>
@@ -18,6 +20,14 @@ const getProductsReducer = createReducer(initialState, (builder) =>
             } else {
                 newState.products = action.payload.response
                 newState.error = null
+            }
+            return newState
+        })
+        .addCase(getProductos.pending, (state, action) => {
+            const newState = {
+                ...state,
+                loading:true,
+                message:'Getting products...'
             }
             return newState
         })

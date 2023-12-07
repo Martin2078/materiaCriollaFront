@@ -3,10 +3,12 @@ import register from '../actions/registerAction'
 
 const initialState = {
     data:{},
-    error:null
+    error:null,
+    message: null,
+    loading:false
 }
 
-const registerReducer = createReducer(initialState, (builder) =>
+const registerReducer = createReducer(initialState, (builder) =>{
     builder
         .addCase(register.fulfilled, (state, action) => {
             const newState = {
@@ -21,6 +23,15 @@ const registerReducer = createReducer(initialState, (builder) =>
                 console.log (newState)
             }
                 return newState
-        }))
+        })
+        .addCase(register.pending, (state, action) => {
+            const newState = {
+                ...state,
+                loading:true,
+                message:'Registering...'
+            }
+            return newState
+        })
+})
 
 export default registerReducer

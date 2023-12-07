@@ -73,7 +73,7 @@ const Checkout = () => {
       <Toaster position='top-center' />
       {token ?
         <div className="px-5 lg:h-screen w-full min-[320px]:flex min-[320px]:flex-col min-[320px]:items-center lg:block">
-          <h1 className="text-3xl px-4 py-5">Checkout</h1>
+          <h1 className="text-3xl mt-5">Checkout</h1>
 
           <div className=" rounded w-full p-4 max-h-screen flex flex-col items-center">
             <div className="mb-4 w-full h-1/6 flex min-[320px]:flex-col min-[320px]:items-center lg:flex-row lg:justify-center lg:items-start "> {/* Tira larga gris para las imágenes */}
@@ -118,7 +118,7 @@ const Checkout = () => {
                           <img
                             src={product.product_id.product_photo}
                             alt="Product"
-                            className="w-16 h-16 object-contain"
+                            className="w-16 h-16 py-1 object-contain"
                           />
                         </div>
                         <div className={`min-[320px]:flex flex-col min-[320px]:justify-evenly  min-[320px]:items-center lg:justify-center lg:items-start min-[320px]:w-full lg:w-5/12 min-[320px]:h-full`}>

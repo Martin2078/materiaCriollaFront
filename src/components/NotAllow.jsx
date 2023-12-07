@@ -9,7 +9,7 @@ const buttonStyle = {
 const NotAllow = () => {
   return (
     <div className="register-container w-full h-screen flex flex-col items-center justify-center">
-      <h1 className="text-3xl text-white font-bold mb-6">
+      <h1 className="text-3xl text-white font-bold mb-6 text-center" >
         You are not registered, log in to continue browsing.
       </h1>
       <div className="mb-4">
@@ -21,7 +21,7 @@ const NotAllow = () => {
           Sign In!
         </Link>
       </div>
-      <h1 className="text-3xl text-white font-bold mb-6">
+      <h1 className="text-3xl text-white font-bold mb-6 text-center">
       You do not have an account?
       </h1>
       <div className="mb-4">

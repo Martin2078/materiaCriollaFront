@@ -10,7 +10,8 @@ const initialState = {
     token: "",
     user: null,       // Representa al usuario que ha iniciado sesión 
     loading: false,   // Indica si se está realizando una operación de inicio de sesión.
-    error: null     // Almacena información sobre cualquier error que ocurra durante el inicio de sesión.
+    error: null,
+    message:null    // Almacena información sobre cualquier error que ocurra durante el inicio de sesión.
 };
 
 // Reducer para manejar las acciones de inicio de sesión
@@ -50,7 +51,8 @@ const authReducer = createReducer(initialState, (builder) => {
         .addCase(login.pending, (state, action) => {
             let nuevoEstado = {
                 ...state,
-                loading: true
+                loading: true,
+                message: 'getting user...'
             }
             return nuevoEstado
         })
@@ -65,12 +67,29 @@ const authReducer = createReducer(initialState, (builder) => {
         .addCase(signOut.fulfilled, (state, action) => {
             return initialState
         })
+        .addCase(signOut.pending, (state, action) => {
+            let nuevoEstado={
+                loading:true,
+                message: 'unlogging...'
+            }
+            return nuevoEstado
+        })
+        
         .addCase(addCheckout.fulfilled,(state,action)=>
         {
             let nuevoEstado={
                 ...state,
                 user:action.payload.user,
                 loading:false,
+            }
+            return nuevoEstado
+        })
+        .addCase(addCheckout.pending,(state,action)=>
+        {
+            let nuevoEstado={
+                ...state,
+                loading:true,
+                message:'adding...'
             }
             return nuevoEstado
         })
@@ -83,12 +102,30 @@ const authReducer = createReducer(initialState, (builder) => {
             }
             return nuevoEstado
         })
+        .addCase(deleteCheckout.pending,(state,action)=>
+        {
+            let nuevoEstado={
+                ...state,
+                loading:true,
+                message:'deleting...'
+            }
+            return nuevoEstado
+        })
         .addCase(updateCheckout.fulfilled,(state,action)=>
         {
             let nuevoEstado={
                 ...state,
                 user:action.payload.user,
                 loading:false,
+            }
+            return nuevoEstado
+        })
+        .addCase(updateCheckout.pending,(state,action)=>
+        {
+            let nuevoEstado={
+                ...state,
+                loading:true,
+                message:'updating...'
             }
             return nuevoEstado
         })
