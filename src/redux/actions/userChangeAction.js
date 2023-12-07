@@ -5,7 +5,7 @@ const userChangeAction = createAsyncThunk('userAddress', async (data) => {
     const tokenStorage=localStorage.getItem('token')
     let headers = { headers: { 'Authorization': `Bearer ${tokenStorage}` } }
     try {
-        let updatedUser = await axios.put(`http://localhost:8080/auth/${userStorage._id}`,data,headers)
+        let updatedUser = await axios.put(`https://materiacriollaback.onrender.com/auth/${userStorage._id}`,data,headers)
         localStorage.removeItem('user')
         localStorage.setItem('user',JSON.stringify(updatedUser.data.response.user))
         return {user:updatedUser.data.response.user,

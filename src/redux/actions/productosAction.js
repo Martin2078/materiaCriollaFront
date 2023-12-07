@@ -3,7 +3,7 @@ import axios from "axios"
 
 const products = createAsyncThunk('getProducts', async () => {
     try {
-        const response = await axios.get('http://localhost:8080/productos')
+        const response = await axios.get('https://materiacriollaback.onrender.com/productos')
         return response.data
     } catch (error) {
         return {error}

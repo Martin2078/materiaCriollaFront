@@ -49,7 +49,7 @@ const Admin = () => {
 
 
   const getCategory = async () => {
-    await axios("http://localhost:8080/categorys")
+    await axios("https://materiacriollaback.onrender.com/categorys")
       .then((res) => {
         setCategorias(res.data.response)
       })
@@ -58,7 +58,7 @@ const Admin = () => {
 
   const getProducts = async () => {
     const id = user._id
-    await axios(`http://localhost:8080/productos/userproducts/${id}?page=${page}&category=${categorias.join(",")}`)
+    await axios(`https://materiacriollaback.onrender.com/productos/userproducts/${id}?page=${page}&category=${categorias.join(",")}`)
       .then((res) => {
         setProductos(res.data.response)
         setProductosFiltrados(res.data.response)
@@ -84,7 +84,7 @@ const Admin = () => {
   }
 
   const modificarProducto = async (producto) => {
-    await axios.put(`http://localhost:8080/productos/userproducts`, producto)
+    await axios.put(`https://materiacriollaback.onrender.com/productos/userproducts`, producto)
       .then((res) => {
 
         setProductoModificado(res.data.response)
@@ -107,7 +107,7 @@ const Admin = () => {
 
   const handleCreate = async (producto) => {
 
-    await axios.post(`http://localhost:8080/productos/createproduct`, producto)
+    await axios.post(`https://materiacriollaback.onrender.com/productos/createproduct`, producto)
       .then((res) => {
         setProductoModificado(res.data.response)
 
@@ -134,7 +134,7 @@ const Admin = () => {
   }
 
   const handleDelete = async (data) => {
-    await axios.delete(`http://localhost:8080/productos/userproducts/delete/${data}`)
+    await axios.delete(`https://materiacriollaback.onrender.com/productos/userproducts/delete/${data}`)
       .then((res) => {
         dispatch(deleteCheckout(data))
         setProductoModificado(res.data.response)

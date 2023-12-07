@@ -11,7 +11,7 @@ const headers = ()=> {
 const addCheckout = createAsyncThunk('addCheckout', async (data) => {
     let userStorage=JSON.parse(localStorage.getItem('user'))
     try {
-        const response = await axios.post(`http://localhost:8080/checkout/${userStorage._id}`,data,headers())
+        const response = await axios.post(`https://materiacriollaback.onrender.com/checkout/${userStorage._id}`,data,headers())
         localStorage.removeItem('user')
         localStorage.setItem('user', JSON.stringify(response.data.response.user))
         return {
@@ -25,7 +25,7 @@ const addCheckout = createAsyncThunk('addCheckout', async (data) => {
 
 const deleteCheckout = createAsyncThunk('deleteCheckout', async (data) => {
     try {
-        const response = await axios.delete(`http://localhost:8080/checkout/${data}`,headers())
+        const response = await axios.delete(`https://materiacriollaback.onrender.com/checkout/${data}`,headers())
         localStorage.removeItem('user')
         localStorage.setItem('user', JSON.stringify(response.data.response.user))
         return {
@@ -40,7 +40,7 @@ const deleteCheckout = createAsyncThunk('deleteCheckout', async (data) => {
 const updateCheckout = createAsyncThunk('updateCheckout', async (data) => {
     let userStorage=JSON.parse(localStorage.getItem('user'))
     try {
-        const response = await axios.put(`http://localhost:8080/checkout/${userStorage._id}`,data,headers())
+        const response = await axios.put(`https://materiacriollaback.onrender.com/checkout/${userStorage._id}`,data,headers())
         localStorage.removeItem('user')
         localStorage.setItem('user', JSON.stringify(response.data.response.user))
         return {

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-const api = 'http://localhost:8080';
+const api = 'https://materiacriollaback.onrender.com';
 const login = createAsyncThunk('login', async (data) => {
     if (data.token) {
         return {

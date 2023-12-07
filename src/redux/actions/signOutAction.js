@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-const api = 'http://localhost:8080';
+const api = 'https://materiacriollaback.onrender.com';
 // Acción asincrónica para cerrar sesion
 const signOut = createAsyncThunk('signOut', async (data) => {
     let headers = { headers: { 'Authorization': `Bearer ${data}` } }
