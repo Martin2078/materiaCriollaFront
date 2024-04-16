@@ -99,7 +99,7 @@ const MyCarousel = () => {
                 <h3 className="text-lg lg:text-xl font-semibold text-center">{screenwidth < 1024 ? products[2]?.name.length > 25 ? `${products[2]?.name.slice(0, 25)}...` : products[2]?.name : products[2]?.name.length > 15 ? `${products[2]?.name.slice(0, 15)}...` : products[2]?.name}</h3>
                 <p className='w-full text-sm lg:text-base '>{screenwidth < 1024 ? products[2]?.description.length > 100 ? `${products[2]?.description.slice(0, 100)}...` : products[2]?.description : products[2]?.description.length > 55 ? `${products[2]?.description.slice(0, 55)}...` : products[2]?.description}</p>
               </div>
-              <Link to={`/Products/${products[2]?.name}`}><button className="mt-2 w-full font-semibold text-lg  text-white px-4 py-1 rounded-mdbg-[url('../public/images/madera.png')] ">
+              <Link to={`/Products/${products[2]?.name}`}><button className="mt-2 w-full font-semibold text-lg  text-white px-4 py-1 rounded-md bg-[url('../public/images/madera.png')] ">
                 View more
               </button></Link>
             </div>
